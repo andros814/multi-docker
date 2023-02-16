@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: docker login --username "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
-      - run: docker build -t axbattai/react-test -f ./client/Dockerfile.dev ./client
+      - run: docker build -t axbattai/react-test -f ./client/Dockerfile.dev .
       - run: docker run -e CI=true axbattai/react-test npm test
  
       - run: docker build -t axbattai/multi-client-10-14 ./client
