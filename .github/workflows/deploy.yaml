@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: docker login --username "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
-      - run: docker build -t axbattai/react-test -f ./client/Dockerfile.dev ./client
+      - run: docker build -t axbattai/react-test -f ./client/Dockerfile.dev ./client .
       - run: docker run -e CI=true axbattai/react-test npm test
  
       - run: docker build -t axbattai/multi-client-10-14 ./client
@@ -31,7 +31,7 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: complex
+          application_name: multi-docker
           environment_name: Multigh-env
           existing_bucket_name: elasticbeanstalk-us-east-1-923445559289
           region: us-east-1
