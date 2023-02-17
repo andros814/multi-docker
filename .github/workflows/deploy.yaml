@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}"
+      - run: docker login --username "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
       - run: docker build -t axbattai/react-test -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true axbattai/react-test npm test
  
