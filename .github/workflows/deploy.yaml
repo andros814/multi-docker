@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: docker login --username "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
-      - run: docker build -t axbattai/react-test -f ./client/Dockerfile.dev ./client
-      - run: docker run -e CI=true axbattai/react-test npm test
+      - run: docker build -t cygnetops/react-test -f ./client/Dockerfile.dev ./client
+      - run: docker run -e CI=true cygnetops/react-test npm test
  
       - run: docker build -t axbattai/multi-client-10-14 ./client
       - run: docker build -t axbattai/multi-nginx-10-14 ./nginx
